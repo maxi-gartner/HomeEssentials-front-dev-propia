@@ -15,7 +15,6 @@ function Favourites({openModal, onCloseModal}) {
     let headers = { headers: { 'authorization': `Bearer ${token}` } }
 
     const [favorites, setFavorite] = useState([])
-    console.log("favorites", favorites);
     useEffect(() => {axios.get(`${apiUrl}favorites?userEmail=${email}`, headers).then(res => setFavorite(res.data.response)).catch(err => console.log(err))}, [])
     useEffect(() => {() => setToken(localStorage.getItem('token'))}, [])
     const reload = () => axios.get(`${apiUrl}favorites?userEmail=${email}`, headers).then(res => setFavorite(res.data.response)).catch(err => console.log(err))

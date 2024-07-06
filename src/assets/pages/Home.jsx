@@ -1,25 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import HomeFirstComponent from "../components/HomeIndex/HomeFirstComponent";
 import HomeOfferts from "../components/HomeIndex/HomeOfferts";
 import HomeBuying from "../components/HomeIndex/HomeBuying";
-import HomeCategory from "../components/HomeIndex/HomeCategory";
 import cards_home from '../../store/actions/cardsHome'
 import { useSelector, useDispatch } from "react-redux";
 import MiddlePhotoSection from "../components/HomeIndex/MiddlePhotoSection";
 import HomeCurriculum from "../components/HomeIndex/HomeCurriculum";
-import { useNavigate } from "react-router-dom";
-import { Link as Anchor } from 'react-router-dom'
-import Brands from "../components/HomeIndex/Brands";
 
 const Home = () => {
 
   let { cards_home_read } = cards_home
   const dispatch = useDispatch()
   let cards = useSelector(store => store.cardsHome.productsHome)
-  const navigate = useNavigate()
-  const redirectToAllProducts = () => {
-    navigate('/allproducts');
-  };
 
   useEffect(() => {
     if (cards.length === 0) {
@@ -27,14 +19,13 @@ const Home = () => {
 
     }
   }, [])
-  const imageStyle = "h-[100%] w-[100%] object-cover hover:rounded-t-md cursor-pointer";
 
   return (
     <>
       <HomeFirstComponent />
       <div className="h-fit min-h-[10vh] bg-[#EDEBEB] flex  flex-col items-center">
       
-       <HomeOfferts /> 
+        <HomeOfferts /> 
         <HomeBuying /> 
         {/* div de cartas */}
 {/*          <div className="bg-white text-[#393939] shadow-[0_4px_5px_rgba(0,0,0,0.09)] rounded-md h-fit xl:min-h-[25%] 2xl:min-h-[20%] w-[85%] flex flex-col p-[4rem] mt-5">

@@ -8,8 +8,10 @@ const HomeFirstComponent = () => {
 
   return (
     <>
-      <CategoriesNav />
-      <div className='relative '>
+      <div className='mt-[170px] relative'>
+      <div className='absolute top-[-60px] left-0'>
+        <CategoriesNav />
+      </div>
         <div className='w-full h-[80vh] flex justify-end'>
           <img src={fondo} alt='image bg' className='h-full object-cover' />
         </div>

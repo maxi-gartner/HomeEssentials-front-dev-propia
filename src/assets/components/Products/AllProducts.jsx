@@ -1,24 +1,17 @@
-import React from 'react'
-
-import { useEffect, useState, useRef } from "react";
-import { Link as Anchor } from 'react-router-dom'
+import { useEffect} from "react";
 import products_actions from '../../../store/actions/products'
 import manufacturers_action from '../../../store/actions/manufacturers'
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Button } from '@nextui-org/react';
-import {BsBagHeart} from 'react-icons/bs'
+import CategoriesNav from '../Navigation/CategoriesNav';
 
 const AllProducts = () => {
-  const number = 123456.789;
-  console.log(new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(number));
   let { products_read } = products_actions
   let { manufacturers_read } = manufacturers_action
   const dispatch = useDispatch()
   let navigate = useNavigate()
   let products = useSelector(store => store.products.products)
   let manufacturers = useSelector(store => store.manufacturerHome.manufacturers)
-  console.log(products);
 
 
   useEffect(() => {
@@ -34,8 +27,10 @@ const AllProducts = () => {
   }, [])
   return (
     <>
-      <h1 className='p-5 text-center font-bold text-2xl flex pt-10 justify-center text-[#393939] w-full bg-[#EDEBEB]'>Take a look of our products! <BsBagHeart className='m-1 w-7'/></h1>
-      <div className='flex justify-center w-full bg-[#EDEBEB]'>
+      <div className='flex justify-center w-full bg-[#EDEBEB] mt-[170px] relative'>
+      <div className='absolute top-[-60px] left-0'>
+        <CategoriesNav />
+      </div>
 
         <div className='w-[90%] flex-wrap my-10 flex justify-center'>
 

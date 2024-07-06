@@ -11,7 +11,6 @@ const CategoriesNav = () => {
   const dispatch = useDispatch()
   let categories = useSelector(store => store.categories.categories)
   let manufacturers = useSelector(store => store.manufacturerHome.manufacturers)
-  console.log(manufacturers);
 
   //
   const [filterPrice, setFilterPrice] = useState(1)
@@ -29,7 +28,6 @@ const CategoriesNav = () => {
     const manufacturerFilter = Object.values(manufacturer_id.current).filter(each => each.checked).map(each => each.value)
     setManufacturerCheked(manufacturerFilter)
   }
-  //console.log("manufacturerCheked", manufacturerCheked);
   //mostrar listas
   const [viewCategories, setViewCategories] = useState(false)
   const [viewManufacturers, setViewManufacturers] = useState(false)
@@ -46,7 +44,7 @@ const CategoriesNav = () => {
   }, [categoriesCheked, manufacturerCheked, filterPrice])
 
   return (
-    <div className='h-[60px] bg-[#7847E0] hidden lg:flex items-center content-center pl-12 mt-[110px]'>
+    <div className='h-[60px] bg-[#7847E0] hidden lg:flex items-center content-center pl-12 fixed w-full z-40'>
       {viewCategories || viewManufacturers || viewPrice ? (
         <div className="fixed top-0 left-0 h-screen w-screen z-10"
           onClick={() => { setViewManufacturers(false), setViewCategories(false), setViewPrice(false) }}></div>

@@ -21,13 +21,11 @@ const SearchAndLogoNavbar = () => {
   let navigate = useNavigate()
   let categories = useSelector(store => store.categories.categories)
   const { userLogin } = useSelector(store => store)
-  //console.log(userLogin);
 
   const user = JSON.parse(localStorage.getItem('user')) || ""
   const email = userLogin.email ? userLogin.email : user.email
 
   const [cart, setCart] = useState(false)
-  //console.log("cart", cart);
   const [fav, setFav] = useState(false)
 
   const home = () => {
@@ -70,11 +68,9 @@ const SearchAndLogoNavbar = () => {
 
   let tokenCurrent = ""
   userLogin.token.length > 0 ? tokenCurrent = userLogin.token : tokenCurrent = tokenLocalStorage
-  //console.log(tokenCurrent);
 
   let userCurrent = {}
   userLogin.user.length > 0 ? userCurrent = userLogin.user : userCurrent = userLocalStorage
-  //console.log(userCurrent);
 
   const [products, setProducts] = useState([])
   useEffect(() => {

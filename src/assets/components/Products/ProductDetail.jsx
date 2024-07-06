@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import apiUrl from '../../../../api'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, /* useSelector */ } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import productOne_action from '../../../store/actions/productOne'
 import { ToastContainer, toast, Flip } from 'react-toastify';
@@ -11,8 +11,8 @@ const {cartNav}= cartNav_action
 
 const {productOne}= productOne_action 
 export default function ProductDetail() {
-  let count = useSelector(store=>store.cartNavReducer.cart)
-  console.log('count', count)
+  //let count = useSelector(store=>store.cartNavReducer.cart)
+  //console.log('count', count)
     const { id } = useParams()
     const dispatch = useDispatch()
     let [prodOne, setProdOne]= useState([])
@@ -25,7 +25,7 @@ export default function ProductDetail() {
     const addProduct = (product_id) => { 
       const data = {userEmail: email, productId: product_id}
       axios.post(`${apiUrl}cart/create`, data, headers).then(res => {
-          console.log(res.data.message)
+          //console.log(res.data.message)
           axios.get(`${apiUrl}cart/${email}`, headers).then(res => {
        
             dispatch((cartNav({
@@ -54,7 +54,7 @@ export default function ProductDetail() {
   const addFavorites = (product_id) => {
     const data = {userEmail: email, productId: product_id}
     axios.post(`${apiUrl}favorites`, data, headers).then(res => {
-        console.log(res.data)
+        //console.log(res.data)
         toast.success("Article added to favorites", {
             theme: "colored",
             })

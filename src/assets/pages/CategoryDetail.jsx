@@ -1,12 +1,8 @@
-import React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import apiUrl from '../../../api'
-import { useSelector, useDispatch } from 'react-redux'
-import { Link as Anchor } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import { Button } from '@nextui-org/react';
 const CategoryDetail = () => {
     let [categoriesProd, setCategoriesProd]= useState([])
     const navigate = useNavigate()
@@ -17,7 +13,7 @@ const CategoryDetail = () => {
             setCategoriesProd(res.data)})
         .catch(err => console.log(err))
     }, [id])
-console.log(categoriesProd[0])
+//console.log(categoriesProd[0])
 
   return (
     <>

@@ -30,7 +30,7 @@ const Products = () => {
       })
       .catch((err) => console.log(err));
   }, [page]);
-  console.log(productData);
+  //console.log(productData);
 
   function HandleArrowNext() {
     if (productData.length === 0) {
@@ -97,7 +97,7 @@ const Products = () => {
               "The product has been created successfully.",
               "success"
             );
-            console.log(response.data);
+            //console.log(response.data);
           })
           .catch((error) => {
             console.error(error);
@@ -132,8 +132,8 @@ const Products = () => {
     }
   }, []);
 
-  console.log(categories.categories);
-  console.log(manufacturers);
+  //console.log(categories.categories);
+  //console.log(manufacturers);
 
   let categories2 = categories.categories;
 
@@ -176,7 +176,7 @@ const Products = () => {
         axios
           .delete(`${apiUrl}admin/deleteone/${productId}`)
           .then((response) => {
-            console.log(response.data);
+            //console.log(response.data);
 
             setProductData((prevData) => {
               const updatedData = prevData.products.filter(
@@ -257,7 +257,7 @@ const Products = () => {
             });
   
             Swal.fire('Success!', 'Your product has been edited.', 'success');
-            console.log(response.data);
+            //console.log(response.data);
           })
           .catch((error) => {
             console.error(error);

@@ -8,7 +8,9 @@ export default function Layout() {
 
     return (
     <>
-    <Navbar/>
+    <div className=" mb-[110px]">
+      <Navbar/>
+    </div>
 
 
     

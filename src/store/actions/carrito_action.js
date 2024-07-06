@@ -6,7 +6,7 @@ const read_cart = createAsyncThunk('read_cart', async()=>{
       
       let userId = "6480bafa03131bde973ed4d7"
       let res = await axios(apiUrl +`cart/${userId}`)
-      console.log(res.data)
+      //console.log(res.data)
       return {
         cartItem:res.data
       }

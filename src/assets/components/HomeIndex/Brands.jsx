@@ -8,7 +8,6 @@ const Brands = () => {
   const dispatch = useDispatch()
   let manufacturers = useSelector(store => store.manufacturerHome.manufacturers)
   let brands = useRef(null)
-  //console.log(brands)
 
 
   function siguiente(){

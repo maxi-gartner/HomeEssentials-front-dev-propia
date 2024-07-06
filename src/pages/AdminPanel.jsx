@@ -16,7 +16,7 @@ const AdminPanel = () => {
     }
   }, []);
 
-console.log(curriculums)
+//console.log(curriculums)
 
 
   return (

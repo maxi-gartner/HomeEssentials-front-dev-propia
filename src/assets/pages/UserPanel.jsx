@@ -44,13 +44,13 @@ const UserPanel = () => {
     email ? data.email = email : ""
     password ? data.password = password : ""
     img ? data.photo = img : ""
-    console.log(data);
+    //console.log(data);
 
     let token = () => localStorage.getItem('token')
     let headers = { headers: { 'authorization': `Bearer ${token()}` } }
     axios.post(apiUrl + `users/${infoUser._id}`, data, headers).then(res => {
                                                                       setInfoUser(res.data.response)
-                                                                      console.log(res.data.message);
+                                                                      //console.log(res.data.message);
                                                                       toast.success(res.data.message, {
                                                                         theme: "colored",
                                                                         })

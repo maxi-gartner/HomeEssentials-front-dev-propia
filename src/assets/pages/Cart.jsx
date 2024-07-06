@@ -22,10 +22,10 @@ const Cart = () => {
                 unit_price: amount,
             });
             const preferenceId = response.data.preferenceId;
-            console.log("response", response);
+            //console.log("response", response);
 
             setPreferenceId(preferenceId);
-            console.log("preferenceId", preferenceId);
+            //console.log("preferenceId", preferenceId);
 
             setAmount(amount)
         } catch (error) {
@@ -36,8 +36,8 @@ const Cart = () => {
    
 
    
-    let count = useSelector(store=>store.cartNavReducer.cart)
-console.log(count)
+    //let count = useSelector(store=>store.cartNavReducer.cart)
+    //console.log(count)
     let navigate=useNavigate()
     const params = useParams()
     const email = atob(params.email)
@@ -56,7 +56,7 @@ console.log(count)
     const addProduct = (product_id) => {
         const data = {userEmail: email, productId: product_id}
         axios.post(`${apiUrl}cart/create`, data, headers).then(res => {
-            console.log(res)
+            //console.log(res)
             toast.success(res.data.message[0], {
                 theme: "colored",
                 })
@@ -81,7 +81,7 @@ console.log(count)
 
     const deleteProduct = (product_id) => { 
         axios.delete(`${apiUrl}cart?userEmail=${email}&productId=${product_id}`, headers).then(res => {
-            console.log(res)
+            //console.log(res)
             toast.error(res.data.message[0], {
                 theme: "colored",
                 })
@@ -98,7 +98,7 @@ console.log(count)
             phoneNumber: phoneNumber
         }
         axios.post(`${apiUrl}cart/confirm?userEmail=${email}`, body, headers).then(res => {
-            console.log(res)
+            //console.log(res)
         }).catch(err => console.log(err))
     }
     

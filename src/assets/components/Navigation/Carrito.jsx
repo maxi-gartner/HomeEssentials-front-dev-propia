@@ -4,14 +4,13 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import  cartNav_action from '../../../store/actions/cartNav'
 const {cartNav}= cartNav_action 
 // eslint-disable-next-line react/prop-types
 function Carrito({openModal, onCloseModal}) {
   const dispatch= useDispatch()
   const navigate = useNavigate();
-  //console.log("openModal", openModal);
   const [products, setProducts] = useState([])
   const user = JSON.parse(localStorage.getItem('user')) || ""
   const email = user.email
@@ -37,7 +36,7 @@ function Carrito({openModal, onCloseModal}) {
     //Eliminar producto
     const deleteProduct = (product_id) => { 
       axios.delete(`${apiUrl}cart?userEmail=${email}&productId=${product_id}`, headers).then(res => {
-          console.log(res)
+          //console.log(res)
           toast.error(res.data.message[0], {
               theme: "colored",
               })

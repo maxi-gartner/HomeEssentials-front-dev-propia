@@ -80,10 +80,10 @@ const handleForm = (e) => {
             references3: References3
         }]
     }
-    console.log("data", data);
+    //console.log("data", data);
     axios.post(apiUrl+"curriculums", data)
     .then(res =>{
-        console.log(res)
+        //console.log(res)
         toast.success(`${res.data.Curriculums.name}, your cv was successfully saved`, {
                 theme: "colored",
                 })
