@@ -3,6 +3,7 @@ import categories_actions from '../../../store/actions/categories'
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import products_actions from '../../../store/actions/products'
+import { useLocation } from 'react-router-dom';
 
 const CategoriesNav = () => {
   let navigate = useNavigate()
@@ -11,6 +12,8 @@ const CategoriesNav = () => {
   const dispatch = useDispatch()
   let categories = useSelector(store => store.categories.categories)
   let manufacturers = useSelector(store => store.manufacturerHome.manufacturers)
+  const capturar = useLocation();
+  console.log(location)
 
   //
   const [filterPrice, setFilterPrice] = useState(1)
