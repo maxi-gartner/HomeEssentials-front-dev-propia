@@ -11,7 +11,7 @@ const CategoriesNav = () => {
   let { products_read } = products_actions
   const dispatch = useDispatch()
   let categories = useSelector(store => store.categories.categories)
-  let manufacturers = useSelector(store => store.manufacturerHome.manufacturers)
+  let manufacturers = useSelector(store => store.manufacturerHome.manufacturers) 
   const capturar = useLocation();
   console.log(location)
 
