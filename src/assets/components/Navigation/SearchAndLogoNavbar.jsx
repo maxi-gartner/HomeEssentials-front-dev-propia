@@ -1,69 +1,71 @@
 import { Link as Anchor } from "react-router-dom";
 import { useEffect, useState } from "react";
-import categories_actions from '../../../store/actions/categories'
+import categories_actions from '../../../store/actions/categories';
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Favourites from "./Favourites.jsx";
 import SearchBar from "./SearchBar";
-import Carrito from "./Carrito"
+import Carrito from "./Carrito";
 import axios from "axios";
 import apiUrl from '../../../../api';
-import userLogin_action from '../../../store/actions/userLogin_action'
-import logo from "../../../../public/images/Logos/logo-2-b.png"
-import cartNav_action from '../../../store/actions/cartNav'
-const { SaveUserLogin } = userLogin_action
-const { cartNav } = cartNav_action
+import userLogin_action from '../../../store/actions/userLogin_action';
+import logo from "../../../../public/images/Logos/logo-2-b.png";
+const { SaveUserLogin } = userLogin_action;
 
 const SearchAndLogoNavbar = () => {
-  let { categories_read } = categories_actions
-  let count = useSelector(store => store.cartNavReducer.cart)
-  const dispatch = useDispatch()
-  let navigate = useNavigate()
-  let categories = useSelector(store => store.categories.categories)
-  const { userLogin } = useSelector(store => store)
+  let { categories_read } = categories_actions;
+  let count = useSelector(store => store.cartNavReducer.cart);
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+  let categories = useSelector(store => store.categories.categories);
+  const { userLogin } = useSelector(store => store);
 
-  const user = JSON.parse(localStorage.getItem('user')) || ""
-  const email = userLogin.email ? userLogin.email : user.email
+  const user = JSON.parse(localStorage.getItem('user')) || "";
+  const email = userLogin.email ? userLogin.email : user.email;
 
-  const [cart, setCart] = useState(false)
-  const [fav, setFav] = useState(false)
+  const [cart, setCart] = useState(false);
+  const [fav, setFav] = useState(false);
 
   const home = () => {
-    navigate('/')
-  }
+    navigate('/');
+  };
 
   useEffect(() => {
     if (categories.length === 0) {
-      dispatch(categories_read())
+      dispatch(categories_read());
     }
-  }, [])
+  }, [dispatch, categories]);
 
+  const role = user?.role;
 
-
-  //const [seeButtonsAdmin, setButtonAdmin] = useState(user?.role === 0 ? true : false);
-  const role = user?.role
-
-  const [menuIsOpen, setMenuIsOpen] = useState(false)
-  const [seeButtonsUser, setSeeButtonsUser] = useState(true)
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [seeButtonsUser, setSeeButtonsUser] = useState(true);
   const handlebutton = (boolean) => {
-    boolean ? setSeeButtonsUser(false) : setSeeButtonsUser(true)
-  }
-  let token = () => localStorage.getItem('token')
-  let headers = { headers: { 'authorization': `Bearer ${token()}` } }
+    boolean ? setSeeButtonsUser(false) : setSeeButtonsUser(true);
+  };
+
+  let token = localStorage.getItem('token');
+  let headers = { headers: { 'Authorization': `Bearer ${token}` } };
+  const userLocalStorage = JSON.parse(localStorage.getItem('user'));
+
   const handleSignOut = () => {
-    axios.post(apiUrl + `auth/signout`, userLocalStorage.email, headers)
+    if (!userLocalStorage || !userLocalStorage.email) {
+      alert('No user email found in local storage');
+      return;
+    }
+
+    axios.post(apiUrl + 'auth/signout', { email: userLocalStorage.email }, headers)
       .then(() => {
         localStorage.clear();
-        navigate('/')
+        navigate('/');
+        dispatch(SaveUserLogin({
+          token: "",
+          user: {}
+        }));
       })
-      .catch(err => alert(err))
-    dispatch(SaveUserLogin({
-      token: "",
-      user: {} 
-    }))
-  }
+      .catch(err => alert(err.response ? err.response.data.message : err.message));
+  };
   const tokenLocalStorage = localStorage.getItem('token');
-  const userLocalStorage = JSON.parse(localStorage.getItem('user'));
 
 
   let tokenCurrent = ""
@@ -72,11 +74,10 @@ const SearchAndLogoNavbar = () => {
   let userCurrent = {}
   userLogin.user.length > 0 ? userCurrent = userLogin.user : userCurrent = userLocalStorage
 
-  const [products, setProducts] = useState([])
+
   useEffect(() => {
     //capturar productos
     axios.get(`${apiUrl}cart/${email}`, headers)
-      .then(res => setProducts(res.data.response))
       .catch(err => console.log(err))
   }, []);
 
