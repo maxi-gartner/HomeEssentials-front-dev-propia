@@ -14,7 +14,7 @@ const HomeOfferts = () => {
         >
           <div className="w-[60%] gap-4 flex flex-col">
             <h2 className="text-xs md:text-xl">Seasonal offers</h2>
-            <h2 className="font-bold text-sm md:text-3xl xl:text-5xl">
+            <h2 className="font-bold text-sm md:text-3xl xl:text-5xl"> 
               Up to 30% discount 
             </h2>
             <h2 className="text-xs md:text-xl">On selected products</h2>
