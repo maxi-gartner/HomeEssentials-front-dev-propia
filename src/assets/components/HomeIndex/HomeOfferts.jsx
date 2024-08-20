@@ -14,8 +14,8 @@ const HomeOfferts = () => {
         >
           <div className="w-[60%] gap-4 flex flex-col">
             <h2 className="text-xs md:text-xl">Seasonal offers</h2>
-            <h2 className="font-bold text-sm md:text-3xl xl:text-5xl"> 
-              Up to 30% discount 
+            <h2 className="font-bold text-sm md:text-3xl xl:text-5xl">
+              Up to 30% discount
             </h2>
             <h2 className="text-xs md:text-xl">On selected products</h2>
             <button className="text-white w-[80%] md:w-[40%] xl:w-[40%] py-2.5 rounded-3xl bg-[#000000] font-semibold">
