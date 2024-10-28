@@ -95,7 +95,7 @@ const SearchAndLogoNavbar = () => {
       <Favourites openModal={fav} onCloseModal={() => setFav(false)} />
 
       <div className=" justify-center bg-[#FFFFFF] h-[100px] lg:h-[80px] flex lg:justify-between fixed w-full z-50 border-b-2 border-[#7847E0] top-[30px]">
-        <div className="px-4 lg:flex lg:gap-12 flex flex-col lg:flex-row justify-center items-center content-center lg:px-12 bg-blue-500 w-full">
+        <div className="px-4 lg:flex lg:gap-12 flex flex-col lg:flex-row justify-center items-center content-center lg:px-12 w-full">
           <div className=" flex sm:flex-row justify-between lg:justify-normal lg:gap-12 w-full">
             <img
               className="w-24 object-cover cursor-pointer"
